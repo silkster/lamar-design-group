@@ -1,0 +1,33 @@
+<svg id="Layer_1" data-name="Layer 1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 11.29 13.67">
+  <defs>
+    <style>.cls-1{fill:#fff;}.cls-1,.cls-3{fill-rule:evenodd;}.cls-2{opacity:0.8;}.cls-3{fill:#89caf7;}.cls-4{mask:url(#mask);}.cls-5{opacity:0.9;}.cls-6{mask:url(#mask-2-2);}</style>
+    <mask id="mask" x="4.95" y="4.99" width="6.33" height="8.68" maskUnits="userSpaceOnUse">
+      <g transform="translate(0.73 0.73)">
+        <g id="mask-2">
+          <path id="path-1" class="cls-1" d="M4.86,8.6c1.4,0,2.53,1.56,2.53,3.5h0c0-1.94,1.13-3.5,2.53-3.5h0C8.52,8.6,7.39,7,7.39,5.1h0C7.39,7,6.26,8.6,4.86,8.6Z" />
+        </g>
+      </g>
+    </mask>
+    <mask id="mask-2-2" x="0" y="0" width="7.91" height="10.85" maskUnits="userSpaceOnUse">
+      <g transform="translate(0.73 0.73)">
+        <g id="mask-4">
+          <path id="path-3" class="cls-1" d="M.07,4.69c1.74,0,3.16,2,3.16,4.38h0c0-2.42,1.41-4.38,3.16-4.38h0C4.64,4.69,3.23,2.74,3.23.32h0c0,2.42-1.42,4.37-3.16,4.37Z" />
+        </g>
+      </g>
+    </mask>
+  </defs>
+  <g id="sparkle">
+    <g id="Group-46-Copy">
+      <g id="Group-176-Copy-6" class="cls-2">
+        <g id="Clip-175">
+          <path id="path-1-2" data-name="path-1" class="cls-3" d="M4.86,8.6c1.4,0,2.53,1.56,2.53,3.5h0c0-1.94,1.13-3.5,2.53-3.5h0C8.52,8.6,7.39,7,7.39,5.1h0C7.39,7,6.26,8.6,4.86,8.6Z" transform="translate(0.73 0.73)" />
+        </g>
+      </g>
+      <g id="Clip-175-2" data-name="Clip-175">
+        <path id="path-3-2" data-name="path-3" class="cls-3" d="M.07,4.69c1.74,0,3.16,2,3.16,4.38h0c0-2.42,1.41-4.38,3.16-4.38h0C4.64,4.69,3.23,2.74,3.23.32h0c0,2.42-1.42,4.37-3.16,4.37Z" transform="translate(0.73 0.73)" />
+      </g>
+    </g>
+  </g>
+</svg>
