@@ -1,0 +1,269 @@
+:root {
+  /* colors */
+  --black: #000;
+  --gray10: #f0eeee;
+  --gray20: #bab09d;
+  --gray30: #a7a7a7;
+  --gray40: #98908c;
+  --gray50: #666;
+  --tan10: #f2ecd5;
+  --tan50: #bfa02f;
+  --red: #f00;
+  --white: #fff;
+
+  /* typography */
+  --font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  --text-color: var(--gray40);
+  --text-color-alt: var(--black);
+  --text-color-heading: var(--black);
+  --text-color-menu-hover: var(--tan50);
+  --field-placeholder-text-color: var(--gray40);
+
+  /* FONT WEIGHT */
+  --font-weight-thin: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  --font-size-xsmall: 0.75rem; /* 12px */
+  --font-size-small: 1rem; /* 16px */
+  --font-size-normal: 1.5rem; /* 24px */
+  --font-size-med: 1.875rem; /* 30px */
+  --font-size-large: 2.5rem; /* 40px */
+  --font-size-xlarge: 3.75rem; /* 60px */
+
+  /* headings */
+  --h1-font-size: var(--font-size-large); /* 40px */
+  --h1-font-size-large: var(--font-size-xlarge); /* 60px */
+  --h2-font-size: var(--font-size-med); /* 40px */
+  --h3-font-size: var(--font-size-normal); /* 20px */
+
+  /* paragraph */
+  --p-font-size: var(--font-size-small);
+  --p-font-size-large: var(--font-size-normal);
+  --p-font-size-special: 1.25rem;
+  --p-font-size-special-large: var(--font-size-med);
+
+  /* layout */
+  --body-background-color: var(--white);
+
+  /* button */
+  --button-font-family: var(--font-family);
+  --button-background-color: var(--tan50);
+  --button-text-color: var(--white);
+  --button-letter-spacing: 6px;
+  --button-text-transform: uppercase;
+
+  --header-menu-link-color: var(--gray20);
+
+  --font-scale: 100%;
+
+  --z-index-base: -1;
+  --z-index-content: 0;
+  --z-index-content-level-1: 1;
+  --z-index-content-level-2: 2;
+  --z-index-content-fixed: 5;
+  --z-index-absolute: 10;
+  --z-index-fixed: 20;
+  --z-index-fixed-menu: 25;
+  --z-index-modal: 30;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-light);
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-color: var(--body-background-color);
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-weight-light);
+  color: var(--tan50);
+  margin: 0 0 30px;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-weight-light);
+  color: var(--text-color-heading);
+  margin: 0 0 30px;
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-weight-light);
+  color: var(--text-color-heading);
+}
+
+p {
+  color: var(--text-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-light);
+  line-height: 1.5;
+  margin: 0 0 40px 0;
+}
+
+b {
+  font-weight: var(--font-weight-bold);
+}
+
+a {
+  color: var(--tan50);
+}
+
+/* form field styles */
+::placeholder {
+  color: var(--field-placeholder-text-color);
+  font-weight: var(--font-weight-light);
+}
+input,
+textarea {
+  color: var(--text-color);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+textarea {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: var(--h1-font-size-large);
+  }
+  p {
+    font-size: var(--p-font-size-large);
+  }
+}

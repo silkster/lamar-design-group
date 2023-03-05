@@ -153,7 +153,7 @@ export default {
   pointer-events: none;
 }
 .topContent {
-  background-color: var(--gray-light);
+  background-color: var(--gray10);
   pointer-events: all;
 }
 @media screen and (min-width: 1024px) {

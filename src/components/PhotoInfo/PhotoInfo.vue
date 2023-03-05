@@ -86,7 +86,7 @@ export default {
   height: 54px;
   justify-content: space-between;
   padding: 10px 32px;
-  background-color: var(--gray-light);
+  background-color: var(--gray10);
 }
 .medium {
   font-weight: var(--font-weight-medium);

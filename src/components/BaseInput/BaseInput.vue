@@ -122,14 +122,14 @@ export default {
   position: relative;
   z-index: var(--z-index-content-level-1);
   height: 40px;
-  background-color: transparent;
+  background-color: var(--tan10);
 }
 
 .input:focus + .label,
 .input:valid + .label {
   transform: scale(0.8) translate(0, -35px);
   left: 0;
-  color: var(--gray-dark);
+  color: var(--gray40);
 }
 
 .input.small {
@@ -140,7 +140,7 @@ export default {
 }
 
 .label {
-  color: var(--gray-medium);
+  color: var(--gray40);
   font-family: var(--font-family);
   font-size: 1rem;
   font-style: normal;
