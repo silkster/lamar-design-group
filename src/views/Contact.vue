@@ -39,7 +39,9 @@ export default {
       <div :class="$style.contactInfo">
         <div :class="$style.addressLine1">{{ contact.address.line[0] }}</div>
         <div :class="$style.city">
-          {{ contact.address.city }} | {{ contact.address.state }}
+          {{ contact.address.city }}
+          <span :class="$style.separator"></span>
+          {{ contact.address.state }}
           {{ contact.address.zip }}
         </div>
         <div :class="$style.phone">{{ contact.phone }}</div>
@@ -99,6 +101,13 @@ h1.containerHeading {
 }
 .contactInfo {
   display: none;
+  font-size: 24px;
+}
+.separator {
+  display: inline-block;
+  width: 14px;
+  height: 13.5px;
+  background-color: var(--tan50);
 }
 .form {
   width: 100%;
@@ -150,7 +159,6 @@ h1.containerHeading {
   .contactInfo {
     display: flex;
     flex-direction: column;
-    color: var(--gray40);
     justify-content: flex-start;
     align-items: flex-start;
     margin-top: 80px;

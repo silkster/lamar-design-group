@@ -51,7 +51,7 @@ export default {
   font-size: var(--p-font-size-special);
 }
 .inquireButton {
-  margin: 0 auto;
+  margin: 0 0;
 }
 .buttonContainer {
   padding: 40px 0;

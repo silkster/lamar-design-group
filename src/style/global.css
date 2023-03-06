@@ -13,7 +13,7 @@
 
   /* typography */
   --font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  --text-color: var(--gray40);
+  --text-color: var(-black);
   --text-color-alt: var(--black);
   --text-color-heading: var(--black);
   --text-color-menu-hover: var(--tan50);
