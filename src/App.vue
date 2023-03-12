@@ -1,7 +1,7 @@
 <script>
 import AppHeader from '@/components/Header/Header.vue';
 import AppFooter from '@/components/Footer/Footer.vue';
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import eventListenerMixin from '@/mixins/events';
 import device from '@/mixins/device';
 
@@ -18,6 +18,7 @@ export default {
   },
 
   computed: {
+    ...mapState('company', ['name', 'url']),
     meta() {
       return this.$router.currentRoute.value.meta || null;
     },
@@ -45,7 +46,7 @@ export default {
     vm.$onResize(() => {
       vm.updateFontScale();
     });
-    document.title = 'Kohlmark Flach Architects';
+    document.title = this.name;
   },
 
   methods: {
