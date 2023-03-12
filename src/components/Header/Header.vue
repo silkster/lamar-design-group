@@ -39,7 +39,7 @@ export default {
       'isSmall',
       'isMobile',
     ]),
-    ...mapState('comppany', ['contact', 'name']),
+    ...mapState('company', ['contact', 'name']),
     shouldFixHeader() {
       return (
         !this.isAbsolute &&
@@ -165,6 +165,7 @@ export default {
   width: 100%;
   height: 100%;
   max-width: 453px;
+  max-height: 446px;
 }
 /*
 @media screen and (min-width: 984px) {
