@@ -1,6 +1,7 @@
 export default {
   name: 'Lamar Design Group',
   nameSplit: ['Lamar', 'Design Group'],
+  url: 'lamardesiggroup.com',
   contact: {
     phone: '703.899.5868',
     address: {
