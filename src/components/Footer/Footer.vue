@@ -118,7 +118,6 @@ export default {
 
 <style module>
 .container {
-  align-items: center;
   box-sizing: border-box;
   background-color: var(--gray50);
   color: var(--gray30);
@@ -130,12 +129,6 @@ export default {
   max-width: 100%;
   font-size: 24px;
   flex-direction: column;
-}
-.fixed {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 .logo {
   display: flex;
@@ -193,18 +186,12 @@ export default {
   max-height: 100%;
 }
 @media screen and (min-width: 984px) {
-  .container {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-  }
   .logo {
     flex-wrap: nowrap;
   }
   .contactInfo {
     display: flex;
     white-space: nowrap;
-    text-align: inherit;
   }
   .company {
     white-space: nowrap;
