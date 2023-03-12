@@ -5,6 +5,10 @@ export default {
   name: 'app-button',
 
   props: {
+    type: {
+      type: String,
+      default: 'button',
+    },
     label: {
       type: String,
     },
@@ -61,7 +65,7 @@ export default {
 </script>
 
 <template>
-  <button type="button" :class="classes" @click="onClick">
+  <button :type="type" :class="classes" @click="onClick">
     <span v-if="showLabel" :class="$style.buttonText">{{ label }}</span>
     <slot></slot>
   </button>
@@ -103,9 +107,10 @@ export default {
   color: var(--button-text-color);
   background-color: var(--button-background-color);
 }
+
 .buttonSecondary,
 .buttonSecondary .buttonText {
-  color: #333;
+  color: var(--button-text-color-alt);
   background-color: transparent;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
 }
@@ -132,5 +137,10 @@ export default {
   .button:not(.buttonIcon) {
     min-width: 306px;
   }
+}
+.button:disabled,
+.button:disabled .buttonText {
+  background-color: var(--button-background-color-disabled);
+  font-style: italic;
 }
 </style>

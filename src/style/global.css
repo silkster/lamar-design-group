@@ -7,6 +7,7 @@
   --gray40: #98908c;
   --gray50: #666;
   --tan10: #f2ecd5;
+  --tan20: #d0c395;
   --tan50: #bfa02f;
   --red: #f00;
   --white: #fff;
@@ -52,7 +53,9 @@
   /* button */
   --button-font-family: var(--font-family);
   --button-background-color: var(--tan50);
+  --button-background-color-disabled: var(--tan20);
   --button-text-color: var(--white);
+  --button-text-color-alt: #333;
   --button-letter-spacing: 6px;
   --button-text-transform: uppercase;
 

@@ -5,6 +5,10 @@ import bannerJpg from '@/assets/banners/contact.jpg';
 import BaseInput from '@/components/BaseInput/BaseInput';
 import BaseTextarea from '@/components/BaseTextarea/BaseTextarea';
 import { mapState } from 'vuex';
+import { VueRecaptcha } from 'vue-recaptcha';
+import config from '@/config';
+
+const { api, recaptcha } = config;
 
 export default {
   name: 'Contact',
@@ -13,6 +17,7 @@ export default {
     AppButton,
     BaseInput,
     BaseTextarea,
+    VueRecaptcha,
   },
   data() {
     return {
@@ -21,14 +26,90 @@ export default {
         height: 700,
         width: 1920,
       },
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      isSuccess: false,
+      isError: false,
+      errorMessage: '',
+      disableSubmitButton: false,
     };
   },
   computed: {
     ...mapState('site', ['screen']),
     ...mapState('company', ['contact']),
+    recaptchaKey() {
+      return recaptcha.key;
+    },
+    isButtonDisabled() {
+      return this.name === '' || this.email === '' || this.disableSubmitButton;
+    },
   },
   methods: {
-    sendMessage() {},
+    submit: function () {
+      console.log('start captcha');
+      this.$refs.recaptcha.execute();
+    },
+    sendMessage(recaptchaToken) {
+      const vm = this;
+      const { name, email, phone, message } = vm;
+
+      vm.disableSubmitButton = true;
+
+      // We use JSON.stringify here so the data can be sent as a string via HTTP
+      const body = JSON.stringify({
+        name,
+        email,
+        phone,
+        message,
+        recaptchaToken,
+      });
+      const requestOptions = {
+        method: 'POST',
+        body,
+      };
+
+      fetch(api.contact.url, requestOptions)
+        .then((response) => {
+          console.log('fetch response', response);
+
+          if (!response.ok) throw new Error('Error in fetch');
+          console.log('raw', response);
+          return response.json();
+        })
+        .then((response) => {
+          console.log('parsed', response);
+          vm.isSuccess = true;
+        })
+        .catch((error) => {
+          console.log('captach error', error);
+
+          vm.isError = true;
+          vm.errorMessage = error.message;
+        })
+        .finally(() => {
+          vm.disableSubmitButton = false;
+        });
+    },
+    resetForm() {
+      this.isSuccess = false;
+      this.isError = false;
+      this.disableSubmitButton = false;
+      this.name = '';
+      this.email = '';
+      this.phone = '';
+      this.message = '';
+      this.$refs.recaptcha.reset();
+    },
+    onCaptchaVerified: function (recaptchaToken) {
+      const vm = this;
+      vm.$refs.recaptcha.reset();
+      vm.sendMessage(recaptchaToken);
+    },
+    onCaptchaExpired: function () {
+      this.$refs.recaptcha.reset();
+    },
   },
 };
 </script>
@@ -48,45 +129,70 @@ export default {
       </div>
       <div :class="$style.form">
         <h1 :class="$style.containerHeading">Inquire</h1>
-        <div :class="$style.contactForm">
-          <div :class="$style.field">
-            <base-input
-              type="text"
-              id="name"
-              name="name"
-              label="Name (required)"
-            />
+        <form
+          @submit.prevent="submit"
+          v-if="!isSuccess"
+          :class="$style.contactForm"
+        >
+          <div :class="$style.contactForm">
+            <div :class="$style.field">
+              <base-input
+                v-model="name"
+                type="text"
+                id="name"
+                name="name"
+                label="Name (required)"
+              />
+            </div>
+            <div :class="$style.field">
+              <base-input
+                v-model="email"
+                type="email"
+                id="email"
+                required
+                label="Email (required)"
+                :class="$style.fieldEmail"
+              />
+            </div>
+            <div :class="$style.field">
+              <base-input
+                v-model="phone"
+                type="tel"
+                input-id="phone"
+                name="phone"
+                label="Phone"
+                required
+              />
+            </div>
+            <div :class="$style.field">
+              <base-textarea
+                v-model="message"
+                id="message"
+                name="message"
+                label="Message"
+                required
+              />
+            </div>
+            <div :class="$style.buttonContainer">
+              <app-button
+                type="submit"
+                size="large"
+                label="Submit"
+                :disabled="isButtonDisabled"
+              />
+            </div>
+            <div :class="$style.field">
+              <vue-recaptcha
+                ref="recaptcha"
+                @verify="onCaptchaVerified"
+                @expired="onCaptchaExpired"
+                size="invisible"
+                :sitekey="recaptchaKey"
+              >
+              </vue-recaptcha>
+            </div>
           </div>
-          <div :class="$style.field">
-            <base-input
-              type="email"
-              id="email"
-              required
-              label="Email (required)"
-              :class="$style.fieldEmail"
-            />
-          </div>
-          <div :class="$style.field">
-            <base-input
-              type="tel"
-              input-id="phone"
-              name="phone"
-              label="Phone"
-              required
-            />
-          </div>
-          <div :class="$style.field">
-            <base-textarea
-              id="message"
-              name="message"
-              label="Message"
-              required
-            />
-          </div>
-          <div :class="$style.buttonContainer">
-            <app-button @click="sendMessage" size="large" label="Submit" />
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </app-content>

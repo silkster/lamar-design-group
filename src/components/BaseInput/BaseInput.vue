@@ -33,7 +33,7 @@ export default {
       default: 'icon-check',
     },
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'keypress', 'blur', 'focus'],
   computed: {
     inputClasses() {
       const { $style, hasError, inputClass } = this;
