@@ -240,19 +240,6 @@ export default {
       <img :src="img.photo" :class="$style.photo" :style="getImageStyle(img)" />
     </div>
   </div>
-  <div :class="navContainerClasses" v-if="!isSmallScreen">
-    <div :class="$style.navTabs">
-      <div
-        v-for="(img, key) in images"
-        :ref="`nav${key}`"
-        :id="`nav${key}`"
-        :class="{ [$style.nav]: true, [$style.navActive]: key === 0 }"
-        :key="key"
-        @click.stop="() => navigate(key)"
-      ></div>
-    </div>
-  </div>
-
   <div v-if="!isSmallScreen" :class="navArrowLeftClasses" @click="navigatePrev">
     <div :class="$style.navArrowWrap">
       <button-arrow-left />
