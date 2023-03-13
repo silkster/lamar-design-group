@@ -140,7 +140,7 @@ export default {
 }
 .button:disabled,
 .button:disabled .buttonText {
-  background-color: var(--button-background-color-disabled);
   font-style: italic;
+  opacity: 0.6;
 }
 </style>
