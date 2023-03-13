@@ -63,7 +63,7 @@ export default {
         email,
         phone,
         message,
-        recaptchaToken,
+        token: recaptchaToken,
       });
       const requestOptions = {
         method: 'POST',
@@ -72,8 +72,6 @@ export default {
 
       fetch(api.contact.url, requestOptions)
         .then((response) => {
-          console.log('fetch response', response);
-
           if (!response.ok) throw new Error('Error in fetch');
           console.log('raw', response);
           return response.json();
@@ -83,13 +81,15 @@ export default {
           vm.isSuccess = true;
         })
         .catch((error) => {
-          console.log('captach error', error);
+          console.log('recaptcha error', error);
 
           vm.isError = true;
           vm.errorMessage = error.message;
         })
         .finally(() => {
-          vm.disableSubmitButton = false;
+          if (!vm.isError) {
+            vm.errorMessage = undefined;
+          }
         });
     },
     resetForm() {
@@ -100,12 +100,19 @@ export default {
       this.email = '';
       this.phone = '';
       this.message = '';
-      this.$refs.recaptcha.reset();
+      const recaptcha = this.$refs.recaptcha;
+
+      try {
+        if (recaptcha != null) {
+          recaptcha.reset();
+        }
+      } catch (e) {
+        console.log('Error in reset: ', e);
+      }
     },
     onCaptchaVerified: function (recaptchaToken) {
-      const vm = this;
-      vm.$refs.recaptcha.reset();
-      vm.sendMessage(recaptchaToken);
+      this.$refs.recaptcha.reset();
+      this.sendMessage(recaptchaToken);
     },
     onCaptchaExpired: function () {
       this.$refs.recaptcha.reset();
@@ -129,9 +136,20 @@ export default {
       </div>
       <div :class="$style.form">
         <h1 :class="$style.containerHeading">Inquire</h1>
+        <div v-if="isError" :class="$style.form">
+          <h3>Uh Oh! There was an error!</h3>
+          <p>{{ errorMessage }}</p>
+        </div>
+        <div v-if="isSuccess" :class="$style.form">
+          <h3>Success!</h3>
+          <p>Your message has been sent!</p>
+          <p>
+            <app-button @click="resetForm" label="reset" size="medium" />
+          </p>
+        </div>
         <form
-          @submit.prevent="submit"
           v-if="!isSuccess"
+          @submit.prevent="submit"
           :class="$style.contactForm"
         >
           <div :class="$style.contactForm">
